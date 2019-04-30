@@ -14,7 +14,7 @@ config :library_api,
 config :library_api, LibraryApiWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "y7rQ5CDcaRS6w63uwgnu7Ih7snoHRu56PyU2AANRXGwvWoeXz8oYneIqgtQy/vAT",
-  render_errors: [view: LibraryApiWeb.ErrorView, accepts: ~w(json)],
+  render_errors: [view: LibraryApiWeb.ErrorView, accepts: ~w(json json-api)],
   pubsub: [name: LibraryApi.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
@@ -24,6 +24,13 @@ config :logger, :console,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
+
+# Configure JaSerializer
+config :mime, :types, %{
+  "application/vnd.api+json" => ["json-api"]
+}
+config :phoenix, :format_encoders, "json-api": Poison
+#config :phoenix, :format_encoders, "json-api": Jason
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
