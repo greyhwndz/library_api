@@ -9,5 +9,6 @@ defmodule LibraryApiWeb.Router do
 
   scope "/api", LibraryApiWeb do
     pipe_through :api
+    get "/", StatusController, :index
   end
 end
