@@ -3,6 +3,12 @@ defmodule LibraryApiWeb.AuthorController do
   alias LibraryApi.Library
   alias LibraryApi.Library.Author
 
+  def index(conn, %{ "filter" => %{ "query" => search_term } }) do
+    authors = Library.search_authors(search_term)
+
+    render(conn, "index.json-api", data: authors)
+  end
+
   def index(conn, _params) do
     authors = Library.list_authors()
 
