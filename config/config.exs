@@ -31,6 +31,8 @@ config :mime, :types, %{
 }
 #config :phoenix, :format_encoders, "json-api": Poison
 config :phoenix, :format_encoders, "json-api": Jason
+#config :ja_serializer,
+#  page_base_url: "http://localhost:4000/api/"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
