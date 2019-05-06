@@ -11,4 +11,11 @@ defmodule LibraryApiWeb.BookView do
     links: [
       related: "/api/books/:id/author"
     ]
+
+  has_many :reviews,
+    serializer: LibraryApiWeb.ReviewView,
+    identifiers: :when_included,
+    links: [
+      related: "/api/books/:id/reviews"
+    ]
 end
