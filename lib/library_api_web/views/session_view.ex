@@ -1,14 +1,12 @@
 defmodule LibraryApiWeb.SessionView do
   use LibraryApiWeb, :view
+  #import Joken.Config
 
   def render("token.json", user) do
-    data = %{id: user.id, email: user.email, username: user.username}
-
-    jwt = %{data: data, sub: user.id}
-    |> Joken.token
-    |> Joken.with_signer(Joken.hs512("SOMESECRETVALUE"))
-    |> Joken.sign
-    IO.inspect jwt
+    mydata = %{id: user.id, email: user.email, username: user.username}
+    jwt = %{data: mydata, sub: user.id}
+    jwt = %{data: mydata, sub: user.id}
+    |> Joken.generate_and_sign(Joken.Signer.create("HS512", "SOMESECRETVALUE"))
 
     %{token: jwt.token}
   end

@@ -46,7 +46,7 @@ defmodule LibraryApi.MixProject do
       #{:ja_serializer, git: "git://github.com/vt-elixir/ja_serializer", ref: "68f793b1f2fd4283fd4353d1ee5354878a490235"},
       #{:comeonin, "~> 5.1"},
       {:bcrypt_elixir, "~> 2.0"},
-      {:joken, "~> 1.5.0"}
+      {:joken, "~> 2.0"}
     ]
   end
 
